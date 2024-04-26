@@ -1,0 +1,20 @@
+// URL de l'API JSON du service VPN
+const vpnApiUrl = 'https://api.cloudflare.com/vpn/servers';
+
+// Fonction pour récupérer les données depuis le serveur JSON
+function fetchVpnServers() {
+  fetch(vpnApiUrl)
+    .then(response => response.json())
+    .then(data => {
+      // Afficher les serveurs VPN disponibles
+      data.servers.forEach(server => {
+        console.log(Server: ${server.name}, Location: ${server.location}, IP: ${server.ip});
+      });
+    })
+    .catch(error => {
+      console.error('Une erreur s\'est produite lors de la récupération des serveurs VPN :', error);
+    });
+}
+
+// Appel de la fonction pour récupérer les serveurs VPN
+fetchVpnServers();
